@@ -36,7 +36,7 @@ const Home = () => {
                             margin: 10,
                         }}
                         onPress={() => {
-                            router.push('/signature/10');
+                            router.push({ pathname: '/signature', params: { tipAmount: 10 } });
                         }}
                     >
                         <Text
@@ -60,7 +60,7 @@ const Home = () => {
                             margin: 10,
                         }}
                         onPress={() => {
-                            router.push('/signature/15');
+                            router.push({ pathname: '/signature', params: { tipAmount: 15 } });
                         }}
                     >
                         <Text
@@ -83,7 +83,7 @@ const Home = () => {
                             margin: 10,
                         }}
                         onPress={() => {
-                            router.push('/signature/20');
+                            router.push({ pathname: '/signature', params: { tipAmount: 20 } });
                         }}
                     >
                         <Text

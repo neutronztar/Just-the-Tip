@@ -3,8 +3,8 @@ import { Stack, useRouter, useLocalSearchParams } from 'expo-router';
 import { Text, View, TouchableOpacity } from 'react-native';
 import SignatureScreen from 'react-native-signature-canvas';
 
-import COLORS from '../../style/colors';
-import Left from '../../svg/Left';
+import COLORS from '../style/colors';
+import Left from '../svg/Left';
 
 const Sign = () => {
     const ref = useRef();
@@ -36,6 +36,7 @@ const Sign = () => {
     };
 
     const params = useLocalSearchParams();
+    console.log(params);
     const router = useRouter();
 
     return (
@@ -52,25 +53,16 @@ const Sign = () => {
                         fontSize: 40,
                         textAlign: 'center',
                         margin: 10,
-                        marginTop: 50,
+                        marginTop: 90,
                     }}
                 >
                     You are tipping {params.tipAmount}%.
                 </Text>
-                <Text
-                    style={{
-                        color: COLORS.text,
-                        fontSize: 40,
-                        textAlign: 'center',
-                        margin: 10,
-                    }}
-                >
-                    Signature Required
-                </Text>
 
                 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', margin: 50 }}>
                     <SignatureScreen
-                        onOK={(img) => console.log(img)}
+                        // onOK={(img) => console.log(img)}
+                        onOK={() => router.push('/photo')}
                         clearText='Clear'
                         confirmText='Confirm'
                         webStyle={`.m-signature-pad {
@@ -83,14 +75,17 @@ const Sign = () => {
                           body,html {
                             position:relative;
                           }`}
+                        minWidth='6'
+                        maxWidth='10'
+                        penColor='red'
                     />
                 </View>
 
-                <View style={{ flexDirection: 'row', justifyContent: 'center', marginBottom: 50 }}>
+                <View style={{ flexDirection: 'row', justifyContent: 'left', marginBottom: 50 }}>
                     <TouchableOpacity
                         style={{
                             backgroundColor: COLORS.button,
-                            width: 640,
+                            width: 200,
                             height: 70,
                             borderRadius: 9,
                             justifyContent: 'center',

@@ -56,7 +56,7 @@ const Custom = () => {
                             if (rounded == 0) {
                                 router.push('/noTip');
                             } else {
-                                router.push(`/signature/${rounded}`);
+                                router.push({ pathname: '/signature', params: { tipAmount: rounded } });
                             }
                         }}
                     >

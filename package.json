@@ -11,6 +11,7 @@
   "dependencies": {
     "@react-native-community/slider": "4.4.2",
     "expo": "^49.0.3",
+    "expo-camera": "~13.4.4",
     "expo-constants": "~14.4.2",
     "expo-linking": "~5.0.2",
     "expo-router": "2.0.0",
@@ -25,7 +26,9 @@
     "react-native-screens": "~3.22.0",
     "react-native-signature-canvas": "^4.7.1",
     "react-native-svg": "^13.14.0",
-    "react-native-web": "~0.19.6"
+    "react-native-web": "~0.19.6",
+    "expo-media-library": "~15.4.1",
+    "expo-av": "~13.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",
