@@ -1,4 +1,3 @@
-import React, { useState, useRef } from 'react';
 import { Stack, useRouter, useLocalSearchParams } from 'expo-router';
 import { Text, View, TouchableOpacity } from 'react-native';
 import SignatureScreen from 'react-native-signature-canvas';
@@ -7,36 +6,7 @@ import COLORS from '../style/colors';
 import Left from '../svg/Left';
 
 const Sign = () => {
-    const ref = useRef();
-
-    // Called after ref.current.readSignature() reads a non-empty base64 string
-    const handleOK = (signature) => {
-        console.log(signature);
-        onOK(signature); // Callback from Component props
-    };
-
-    // Called after ref.current.readSignature() reads an empty string
-    const handleEmpty = () => {
-        console.log('Empty');
-    };
-
-    // Called after ref.current.clearSignature()
-    const handleClear = () => {
-        console.log('clear success!');
-    };
-
-    // Called after end of stroke
-    const handleEnd = () => {
-        ref.current.readSignature();
-    };
-
-    // Called after ref.current.getData()
-    const handleData = (data) => {
-        console.log(data);
-    };
-
     const params = useLocalSearchParams();
-    console.log(params);
     const router = useRouter();
 
     return (
@@ -56,13 +26,12 @@ const Sign = () => {
                         marginTop: 90,
                     }}
                 >
-                    You are tipping {params.tipAmount}%.{params.tipAmount == 69 ? ' Nice.' : ''}
+                    You are tipping {params.tipAmount}%.{params.tipAmount == 69 ? '.. You dirty dog' : ''}
                 </Text>
 
                 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', margin: 50 }}>
                     <SignatureScreen
-                        // onOK={(img) => console.log(img)}
-                        onOK={() => router.push('/photo')}
+                        onOK={(img) => router.push({ pathname: '/photo', params: { signatureImg: img, tipAmount: params.tipAmount } })}
                         clearText='Clear'
                         confirmText='Confirm'
                         webStyle={`.m-signature-pad {

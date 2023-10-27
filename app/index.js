@@ -60,7 +60,7 @@ const Home = () => {
                             margin: 15,
                         }}
                         onPress={() => {
-                            router.push({ pathname: '/signature', params: { tipAmount: 15 } });
+                            router.push({ pathname: '/signature', params: { tipAmount: 20 } });
                         }}
                     >
                         <Text
@@ -69,7 +69,7 @@ const Home = () => {
                                 fontSize: 55,
                             }}
                         >
-                            15%
+                            20%
                         </Text>
                     </TouchableOpacity>
                     <TouchableOpacity
@@ -83,7 +83,7 @@ const Home = () => {
                             margin: 15,
                         }}
                         onPress={() => {
-                            router.push({ pathname: '/signature', params: { tipAmount: 20 } });
+                            router.push({ pathname: '/signature', params: { tipAmount: 30 } });
                         }}
                     >
                         <Text
@@ -92,7 +92,7 @@ const Home = () => {
                                 fontSize: 55,
                             }}
                         >
-                            20%
+                            30%
                         </Text>
                     </TouchableOpacity>
                 </View>

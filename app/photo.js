@@ -1,9 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Stack, useRouter } from 'expo-router';
-import { Text, View, TouchableOpacity, Image } from 'react-native';
+import { Stack, useRouter, useLocalSearchParams } from 'expo-router';
+import { Text, View, TouchableOpacity, Image, ImageBackground } from 'react-native';
 import { Camera, CameraType } from 'expo-camera';
 import * as MediaLibrary from 'expo-media-library';
 import { Audio } from 'expo-av';
+import { captureRef } from 'react-native-view-shot';
 
 import COLORS from '../style/colors';
 import Left from '../svg/Left';
@@ -11,11 +12,13 @@ import JumpScare from '../images/JumpScare.jpg';
 
 const Photo = () => {
     const router = useRouter();
+    const params = useLocalSearchParams();
     const [hasCameraPermissions, setHasCameraPermissions] = useState(null);
     const [image, setImage] = useState(null);
     const [countdown, setCountdown] = useState(null);
     const cameraRef = useRef(null);
     const [sound, setSound] = useState();
+    const imageRef = useRef();
 
     useEffect(() => {
         (async () => {
@@ -47,13 +50,22 @@ const Photo = () => {
         if (cameraRef) {
             try {
                 const data = await cameraRef.current.takePictureAsync();
-                console.log(data);
                 await new Promise((r) => setTimeout(r, 1000));
                 setImage(data.uri);
-                saveImage(data.uri);
             } catch (e) {
                 console.log(e);
             }
+        }
+    };
+
+    const takeScreenshot = async () => {
+        try {
+            const uri = await captureRef(imageRef, {
+                quality: 1,
+            });
+            saveImage(uri);
+        } catch (e) {
+            console.log(e);
         }
     };
 
@@ -78,8 +90,21 @@ const Photo = () => {
         playScareSound();
         await new Promise((r) => setTimeout(r, 1000));
         takePicture();
-        await new Promise((r) => setTimeout(r, 2000));
+        await new Promise((r) => setTimeout(r, 1000));
         setCountdown(null);
+        await new Promise((r) => setTimeout(r, 1000));
+        takeScreenshot();
+    };
+
+    const renderOverlay = () => {
+        return (
+            <View style={{ flex: 1, justifyContent: 'space-between', alignItems: 'center' }}>
+                <Text style={{ fontFamily: 'Chalkboard SE', fontSize: 75, color: 'red', margin: 15 }}>
+                    I tipped {params.tipAmount}% {params.tipAmount == 69 ? '(nice)' : ''}
+                </Text>
+                <Image source={{ uri: params.signatureImg }} style={{ width: '70%', height: '30%', margin: 15 }} />
+            </View>
+        );
     };
 
     return (
@@ -92,11 +117,21 @@ const Photo = () => {
             <View style={{ flex: 1, justifyContent: 'center' }}>
                 <View style={{ flex: 1 }}>
                     {!image ? (
-                        <Camera style={{ flex: 1, marginTop: 20 }} type={CameraType.front} ref={cameraRef}>
-                            {countdown == 0 ? <Image source={JumpScare} style={{ width: '100%', height: '100%', opacity: 0.9 }} /> : <></>}
-                        </Camera>
+                        <View style={{ flex: 1 }}>
+                            <Camera style={{ flex: 1, marginTop: 20 }} type={CameraType.front} ref={cameraRef}>
+                                {countdown == 0 ? (
+                                    <Image source={JumpScare} style={{ width: '100%', height: '100%', opacity: 0.9 }} />
+                                ) : (
+                                    renderOverlay()
+                                )}
+                            </Camera>
+                        </View>
                     ) : (
-                        <Image style={{ flex: 1, marginTop: 20 }} source={{ uri: image }} />
+                        <View style={{ flex: 1 }} ref={imageRef} collapsable={false}>
+                            <ImageBackground style={{ flex: 1, marginTop: 20 }} source={{ uri: image }}>
+                                {renderOverlay()}
+                            </ImageBackground>
+                        </View>
                     )}
                 </View>
 
