@@ -9,7 +9,14 @@ const NoTip = () => {
     const router = useRouter();
 
     const sentence = useMemo(() => {
-        options = ['Really? I live on tips. Go back and try again.', "I'll just assume your finger slipped."];
+        options = [
+            'I live on tips. Go back and try again.',
+            "I'll just assume your finger slipped.",
+            "You're a bad person.",
+            'How could you do this to me?',
+            "You think you'll get away with this? You won't.",
+            'Are you sure about that?',
+        ];
 
         return options[Math.floor(Math.random() * options.length)];
     });
@@ -25,9 +32,9 @@ const NoTip = () => {
                 <Text
                     style={{
                         color: COLORS.text,
-                        fontSize: 40,
+                        fontSize: 55,
                         textAlign: 'center',
-                        margin: 10,
+                        margin: 15,
                     }}
                 >
                     {sentence}
@@ -36,12 +43,12 @@ const NoTip = () => {
                     <TouchableOpacity
                         style={{
                             backgroundColor: COLORS.button,
-                            width: 640,
-                            height: 70,
+                            width: 960,
+                            height: 110,
                             borderRadius: 9,
                             justifyContent: 'center',
                             alignItems: 'center',
-                            margin: 10,
+                            margin: 15,
                         }}
                         onPress={() => {
                             router.back();

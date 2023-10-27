@@ -50,13 +50,13 @@ const Sign = () => {
                 <Text
                     style={{
                         color: COLORS.text,
-                        fontSize: 40,
+                        fontSize: 55,
                         textAlign: 'center',
                         margin: 10,
                         marginTop: 90,
                     }}
                 >
-                    You are tipping {params.tipAmount}%.
+                    You are tipping {params.tipAmount}%.{params.tipAmount == 69 ? ' Nice.' : ''}
                 </Text>
 
                 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', margin: 50 }}>
@@ -86,11 +86,11 @@ const Sign = () => {
                         style={{
                             backgroundColor: COLORS.button,
                             width: 200,
-                            height: 70,
+                            height: 100,
                             borderRadius: 9,
                             justifyContent: 'center',
                             alignItems: 'center',
-                            margin: 10,
+                            margin: 15,
                         }}
                         onPress={() => {
                             router.back();

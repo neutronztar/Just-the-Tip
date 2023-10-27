@@ -8,6 +8,18 @@
       "expo-router"
     ],
     "name": "gratuity-prompt",
-    "slug": "gratuity-prompt"
+    "slug": "gratuity-prompt",
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "438cd4cb-c003-46d3-a416-e9aad7dfe294"
+      }
+    },
+    "owner": "neutronstar",
+    "ios": {
+      "bundleIdentifier": "com.neutronstar.gratuityprompt"
+    }
   }
 }

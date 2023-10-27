@@ -4,9 +4,9 @@ import Svg, { Path } from 'react-native-svg';
 function Left(props) {
     return (
         <Svg
-            height='32px'
+            height='60px'
             viewBox='0 0 32 32'
-            width='32px'
+            width='60px'
             xmlSpace='preserve'
             xmlns='http://www.w3.org/2000/svg'
             enableBackground='new 0 0 32 32'

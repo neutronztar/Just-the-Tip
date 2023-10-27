@@ -17,9 +17,9 @@ const Home = () => {
                 <Text
                     style={{
                         color: COLORS.text,
-                        fontSize: 40,
+                        fontSize: 55,
                         textAlign: 'center',
-                        margin: 10,
+                        margin: 15,
                     }}
                 >
                     Add a tip?
@@ -28,12 +28,12 @@ const Home = () => {
                     <TouchableOpacity
                         style={{
                             backgroundColor: COLORS.button,
-                            width: 200,
-                            height: 150,
+                            width: 300,
+                            height: 225,
                             borderRadius: 9,
                             justifyContent: 'center',
                             alignItems: 'center',
-                            margin: 10,
+                            margin: 15,
                         }}
                         onPress={() => {
                             router.push({ pathname: '/signature', params: { tipAmount: 10 } });
@@ -42,7 +42,7 @@ const Home = () => {
                         <Text
                             style={{
                                 color: COLORS.text,
-                                fontSize: 32,
+                                fontSize: 55,
                             }}
                         >
                             10%
@@ -52,12 +52,12 @@ const Home = () => {
                     <TouchableOpacity
                         style={{
                             backgroundColor: COLORS.button,
-                            width: 200,
-                            height: 150,
+                            width: 300,
+                            height: 225,
                             borderRadius: 9,
                             justifyContent: 'center',
                             alignItems: 'center',
-                            margin: 10,
+                            margin: 15,
                         }}
                         onPress={() => {
                             router.push({ pathname: '/signature', params: { tipAmount: 15 } });
@@ -66,7 +66,7 @@ const Home = () => {
                         <Text
                             style={{
                                 color: COLORS.text,
-                                fontSize: 32,
+                                fontSize: 55,
                             }}
                         >
                             15%
@@ -75,12 +75,12 @@ const Home = () => {
                     <TouchableOpacity
                         style={{
                             backgroundColor: COLORS.button,
-                            width: 200,
-                            height: 150,
+                            width: 300,
+                            height: 225,
                             borderRadius: 9,
                             justifyContent: 'center',
                             alignItems: 'center',
-                            margin: 10,
+                            margin: 15,
                         }}
                         onPress={() => {
                             router.push({ pathname: '/signature', params: { tipAmount: 20 } });
@@ -89,7 +89,7 @@ const Home = () => {
                         <Text
                             style={{
                                 color: COLORS.text,
-                                fontSize: 32,
+                                fontSize: 55,
                             }}
                         >
                             20%
@@ -101,12 +101,12 @@ const Home = () => {
                     <TouchableOpacity
                         style={{
                             backgroundColor: COLORS.button,
-                            width: 640,
-                            height: 70,
+                            width: 960,
+                            height: 110,
                             borderRadius: 9,
                             justifyContent: 'center',
                             alignItems: 'center',
-                            margin: 10,
+                            margin: 15,
                         }}
                         onPress={() => {
                             router.push('/custom');
@@ -115,7 +115,7 @@ const Home = () => {
                         <Text
                             style={{
                                 color: COLORS.text,
-                                fontSize: 32,
+                                fontSize: 55,
                             }}
                         >
                             Custom
@@ -127,12 +127,12 @@ const Home = () => {
                     <TouchableOpacity
                         style={{
                             backgroundColor: COLORS.button,
-                            width: 640,
-                            height: 70,
+                            width: 960,
+                            height: 110,
                             borderRadius: 9,
                             justifyContent: 'center',
                             alignItems: 'center',
-                            margin: 10,
+                            margin: 15,
                         }}
                         onPress={() => {
                             router.push('/noTip');
@@ -141,7 +141,7 @@ const Home = () => {
                         <Text
                             style={{
                                 color: COLORS.text,
-                                fontSize: 32,
+                                fontSize: 55,
                             }}
                         >
                             No tip

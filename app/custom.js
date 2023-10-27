@@ -22,9 +22,9 @@ const Custom = () => {
                 <Text
                     style={{
                         color: COLORS.text,
-                        fontSize: 40,
+                        fontSize: 55,
                         textAlign: 'center',
-                        margin: 10,
+                        margin: 15,
                     }}
                 >
                     Leave a custom tip
@@ -44,12 +44,12 @@ const Custom = () => {
                     <TouchableOpacity
                         style={{
                             backgroundColor: COLORS.button,
-                            width: 640,
-                            height: 70,
+                            width: 960,
+                            height: 110,
                             borderRadius: 9,
                             justifyContent: 'center',
                             alignItems: 'center',
-                            margin: 10,
+                            margin: 15,
                         }}
                         onPress={() => {
                             rounded = Math.round(tipAmount);
@@ -63,10 +63,10 @@ const Custom = () => {
                         <Text
                             style={{
                                 color: COLORS.text,
-                                fontSize: 32,
+                                fontSize: 55,
                             }}
                         >
-                            Leave {Math.round(tipAmount)}% tip
+                            Leave {Math.round(tipAmount)}% tip{Math.round(tipAmount) == 69 ? ' (nice)' : ''}
                         </Text>
                     </TouchableOpacity>
                 </View>
@@ -74,12 +74,12 @@ const Custom = () => {
                     <TouchableOpacity
                         style={{
                             backgroundColor: COLORS.button,
-                            width: 640,
-                            height: 70,
+                            width: 960,
+                            height: 110,
                             borderRadius: 9,
                             justifyContent: 'center',
                             alignItems: 'center',
-                            margin: 10,
+                            margin: 15,
                         }}
                         onPress={() => {
                             router.back();
