@@ -1,154 +1,85 @@
-import { View, Text, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, TouchableOpacity, Animated } from 'react-native';
 import { Stack, useRouter } from 'expo-router';
 
 import COLORS from '../style/colors';
+import SimpleCard from '../svg/SimpleCard';
+
+const CARD_SLIDE_DISTANCE = 150;
 
 const Home = () => {
     const router = useRouter();
 
+    const [slideAnimation] = useState(new Animated.Value(0)); // Initial value for sliding: can be 0 or any other value as needed
+
+    useEffect(() => {
+        Animated.loop(
+            Animated.sequence([
+                Animated.timing(slideAnimation, {
+                    toValue: -CARD_SLIDE_DISTANCE, // sliding up
+                    duration: 1000,
+                    useNativeDriver: true,
+                }),
+                Animated.timing(slideAnimation, {
+                    toValue: 0, // sliding down
+                    duration: 400,
+                    useNativeDriver: true,
+                }),
+            ])
+        ).start();
+    }, []);
+
     return (
         <View style={{ flex: 1, backgroundColor: COLORS.background }}>
-            <Stack.Screen
-                options={{
-                    headerShown: false,
+            <TouchableOpacity
+                style={{ flex: 1, backgroundColor: COLORS.background, justifyContent: 'center', flexDirection: 'row' }}
+                onPress={() => {
+                    router.push('/tipPrompt');
                 }}
-            />
-            <View style={{ flex: 1, justifyContent: 'center' }}>
-                <Text
+            >
+                <Stack.Screen
+                    options={{
+                        headerShown: false,
+                    }}
+                />
+                <View style={{ flex: 1 }}></View>
+                <View
                     style={{
-                        color: COLORS.text,
-                        fontSize: 55,
-                        textAlign: 'center',
-                        margin: 15,
+                        justifyContent: 'center',
                     }}
                 >
-                    Add a tip?
-                </Text>
-                <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-                    <TouchableOpacity
+                    <Text
                         style={{
-                            backgroundColor: COLORS.button,
-                            width: 300,
-                            height: 225,
-                            borderRadius: 9,
-                            justifyContent: 'center',
-                            alignItems: 'center',
+                            color: COLORS.text,
+                            fontSize: 100,
+                            textAlign: 'center',
                             margin: 15,
                         }}
-                        onPress={() => {
-                            router.push({ pathname: '/signature', params: { tipAmount: 10 } });
-                        }}
                     >
-                        <Text
-                            style={{
-                                color: COLORS.text,
-                                fontSize: 55,
-                            }}
-                        >
-                            10%
-                        </Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity
+                        Please pay here
+                    </Text>
+                    <Text
                         style={{
-                            backgroundColor: COLORS.button,
-                            width: 300,
-                            height: 225,
-                            borderRadius: 9,
-                            justifyContent: 'center',
-                            alignItems: 'center',
+                            color: COLORS.text,
+                            fontSize: 30,
+                            textAlign: 'center',
                             margin: 15,
                         }}
-                        onPress={() => {
-                            router.push({ pathname: '/signature', params: { tipAmount: 20 } });
-                        }}
                     >
-                        <Text
-                            style={{
-                                color: COLORS.text,
-                                fontSize: 55,
-                            }}
-                        >
-                            20%
-                        </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        style={{
-                            backgroundColor: COLORS.button,
-                            width: 300,
-                            height: 225,
-                            borderRadius: 9,
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            margin: 15,
-                        }}
-                        onPress={() => {
-                            router.push({ pathname: '/signature', params: { tipAmount: 30 } });
-                        }}
-                    >
-                        <Text
-                            style={{
-                                color: COLORS.text,
-                                fontSize: 55,
-                            }}
-                        >
-                            30%
-                        </Text>
-                    </TouchableOpacity>
+                        We accept card, cash, Apple Pay, or human souls.
+                    </Text>
                 </View>
-
-                <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-                    <TouchableOpacity
-                        style={{
-                            backgroundColor: COLORS.button,
-                            width: 960,
-                            height: 110,
-                            borderRadius: 9,
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            margin: 15,
-                        }}
-                        onPress={() => {
-                            router.push('/custom');
-                        }}
-                    >
-                        <Text
-                            style={{
-                                color: COLORS.text,
-                                fontSize: 55,
-                            }}
-                        >
-                            Custom
-                        </Text>
-                    </TouchableOpacity>
-                </View>
-
-                <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-                    <TouchableOpacity
-                        style={{
-                            backgroundColor: COLORS.button,
-                            width: 960,
-                            height: 110,
-                            borderRadius: 9,
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            margin: 15,
-                        }}
-                        onPress={() => {
-                            router.push('/noTip');
-                        }}
-                    >
-                        <Text
-                            style={{
-                                color: COLORS.text,
-                                fontSize: 55,
-                            }}
-                        >
-                            No tip
-                        </Text>
-                    </TouchableOpacity>
-                </View>
-            </View>
+                <Animated.View
+                    style={{
+                        justifyContent: 'center',
+                        alignItems: 'flex-end',
+                        flex: 1,
+                        transform: [{ translateY: slideAnimation }],
+                    }}
+                >
+                    <SimpleCard transform={[{ translateY: CARD_SLIDE_DISTANCE / 2 }]} fill={COLORS.button} />
+                </Animated.View>
+            </TouchableOpacity>
         </View>
     );
 };
