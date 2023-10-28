@@ -1,11 +1,9 @@
 import * as React from 'react';
 import Svg, { Path } from 'react-native-svg';
 
-function SimpleCard(props) {
+function SvgComponent(props) {
     return (
         <Svg
-            height='220px'
-            width='220px'
             viewBox='0 0 1182 1182'
             xmlns='http://www.w3.org/2000/svg'
             fillRule='evenodd'
@@ -15,12 +13,12 @@ function SimpleCard(props) {
             {...props}
         >
             <Path
-                d='M1233 369.542c0-39.485-32.67-71.542-72.91-71.542H782.906C742.668 298 710 330.057 710 369.542v627.916c0 39.482 32.668 71.542 72.906 71.542h377.184c40.24 0 72.91-32.06 72.91-71.542V369.542z'
+                d='M1233 337.528c0-21.816-18.05-39.528-40.28-39.528H750.282C728.05 298 710 315.712 710 337.528v691.942c0 21.82 18.05 39.53 40.282 39.53h442.438c22.23 0 40.28-17.71 40.28-39.53V337.528z'
                 transform='matrix(1.33002 0 0 1.35538 -701.565 -335.853)'
             />
-            <Path fill='black' transform='matrix(1.13274 0 0 1 -64.584 0)' d='M366 68.051H479V1113.051H366z' />
+            <Path fill='black' transform='matrix(1.13274 0 0 1 -75.584 0)' d='M366 68.051H479V1113.051H366z' />
         </Svg>
     );
 }
 
-export default SimpleCard;
+export default SvgComponent;

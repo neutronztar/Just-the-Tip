@@ -8,6 +8,7 @@ import { captureRef } from 'react-native-view-shot';
 
 import COLORS from '../style/colors';
 import Left from '../svg/Left';
+import Splatter from '../svg/Splatter';
 import JumpScare from '../images/JumpScare.jpg';
 
 const Photo = () => {
@@ -98,7 +99,8 @@ const Photo = () => {
 
     const renderOverlay = () => {
         return (
-            <View style={{ flex: 1, justifyContent: 'space-between', alignItems: 'center' }}>
+            <View style={{ flex: 1, justifyContent: 'space-between', alignItems: 'center', position: 'relative' }}>
+                <Splatter position='absolute' />
                 <Text style={{ fontFamily: 'Chalkboard SE', fontSize: 75, color: 'red', margin: 15 }}>
                     I tipped {params.tipAmount}% {params.tipAmount == 69 ? '(nice)' : ''}
                 </Text>

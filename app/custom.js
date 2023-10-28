@@ -1,24 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Stack, useRouter } from 'expo-router';
 import { Text, View, TouchableOpacity } from 'react-native';
 import Slider from '@react-native-community/slider';
 
 import COLORS from '../style/colors';
 import Left from '../svg/Left';
+import Reaper from '../svg/Reaper';
+
+const reaperThreshold = 20;
 
 const Custom = () => {
-    const [tipAmount, setTipAmount] = useState(15);
-
+    const [tipAmount, setTipAmount] = useState(18);
     const router = useRouter();
 
+    const reaperOpacity = useMemo(() => {
+        if (tipAmount >= reaperThreshold) {
+            return 0;
+        } else {
+            return (reaperThreshold - tipAmount) / reaperThreshold;
+        }
+    }, [tipAmount]);
+
     return (
-        <View style={{ flex: 1, backgroundColor: COLORS.background }}>
+        <View style={{ flex: 1, backgroundColor: COLORS.background, position: 'relative' }}>
             <Stack.Screen
                 options={{
                     headerShown: false,
                 }}
             />
-            <View style={{ flex: 1, justifyContent: 'center' }}>
+            <Reaper position='absolute' opacity={reaperOpacity} />
+            <View style={{ flex: 1, justifyContent: 'center', zIndex: 1 }}>
                 <Text
                     style={{
                         color: COLORS.text,

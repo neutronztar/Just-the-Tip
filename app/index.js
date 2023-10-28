@@ -4,6 +4,9 @@ import { Stack, useRouter } from 'expo-router';
 
 import COLORS from '../style/colors';
 import SimpleCard from '../svg/SimpleCard';
+import Contactless from '../svg/Contactless';
+import ApplePay from '../svg/ApplePay';
+import SoulPay from '../svg/SoulPay';
 
 const CARD_SLIDE_DISTANCE = 150;
 
@@ -30,9 +33,10 @@ const Home = () => {
     }, []);
 
     return (
+        // The outer View is here so that the whole screen doesn't flash when you press on the TouchableOpacity
         <View style={{ flex: 1, backgroundColor: COLORS.background }}>
             <TouchableOpacity
-                style={{ flex: 1, backgroundColor: COLORS.background, justifyContent: 'center', flexDirection: 'row' }}
+                style={{ flex: 1, justifyContent: 'center', flexDirection: 'row' }}
                 onPress={() => {
                     router.push('/tipPrompt');
                 }}
@@ -48,6 +52,14 @@ const Home = () => {
                         justifyContent: 'center',
                     }}
                 >
+                    <View
+                        style={{
+                            flex: 1,
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                        }}
+                    ></View>
                     <Text
                         style={{
                             color: COLORS.text,
@@ -61,13 +73,25 @@ const Home = () => {
                     <Text
                         style={{
                             color: COLORS.text,
-                            fontSize: 30,
+                            fontSize: 45,
                             textAlign: 'center',
                             margin: 15,
                         }}
                     >
-                        We accept card, cash, Apple Pay, or human souls.
+                        We accept card, cash, Apple Pay, or Soul Pay.
                     </Text>
+                    <View
+                        style={{
+                            flex: 1,
+                            flexDirection: 'row',
+                            alignItems: 'flex-end',
+                            justifyContent: 'center',
+                        }}
+                    >
+                        <Contactless margin={20} fill={COLORS.text} />
+                        <ApplePay margin={20} fill={COLORS.text} />
+                        <SoulPay margin={20} fill={COLORS.text} />
+                    </View>
                 </View>
                 <Animated.View
                     style={{
