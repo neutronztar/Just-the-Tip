@@ -78,7 +78,7 @@ const Home = () => {
                             margin: 15,
                         }}
                     >
-                        We accept card, cash, Apple Pay, or Soul Pay.
+                        We accept card, cash, Apple Pay,{'\n'}or Soul Pay.
                     </Text>
                     <View
                         style={{
