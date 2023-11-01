@@ -20,6 +20,7 @@ const Photo = () => {
     const cameraRef = useRef(null);
     const [sound, setSound] = useState();
     const imageRef = useRef();
+    const [disableCameraButton, setDisableCameraButton] = useState(false);
 
     useEffect(() => {
         (async () => {
@@ -81,20 +82,25 @@ const Photo = () => {
     };
 
     const startCountdown = async () => {
+        setDisableCameraButton(true);
         setCountdown(3);
         await new Promise((r) => setTimeout(r, 1000));
         setCountdown(2);
         await new Promise((r) => setTimeout(r, 1000));
         setCountdown(1);
         await new Promise((r) => setTimeout(r, 1000));
+
+        // When countdown is 0, the scary image is displayed
         setCountdown(0);
         playScareSound();
+
         await new Promise((r) => setTimeout(r, 1000));
         takePicture();
         await new Promise((r) => setTimeout(r, 1000));
         setCountdown(null);
         await new Promise((r) => setTimeout(r, 1000));
         takeScreenshot();
+        setDisableCameraButton(false);
     };
 
     const renderOverlay = () => {
@@ -167,6 +173,7 @@ const Photo = () => {
                                 margin: 10,
                             }}
                             onPress={countdown == null ? startCountdown : () => {}}
+                            disabled={disableCameraButton}
                         >
                             <Text
                                 style={{
