@@ -78,6 +78,7 @@ const Custom = () => {
                             }}
                         >
                             Leave {Math.round(tipAmount)}% tip{Math.round(tipAmount) == 69 ? ' (nice)' : ''}
+                            {Math.round(tipAmount) == 100 ? ' (sexy)' : ''}
                         </Text>
                     </TouchableOpacity>
                 </View>

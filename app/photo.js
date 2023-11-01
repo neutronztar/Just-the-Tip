@@ -109,6 +109,8 @@ const Photo = () => {
                 <Splatter position='absolute' />
                 <Text style={{ fontFamily: 'Chalkboard SE', fontSize: 75, color: 'red', margin: 15 }}>
                     I tipped {params.tipAmount}% {params.tipAmount == 69 ? '(nice)' : ''}
+                    {params.tipAmount == 100 ? "I'm sexy" : ''}
+                    {params.tipAmount == 1 ? '😈' : ''}
                 </Text>
                 <Image source={{ uri: params.signatureImg }} style={{ width: '70%', height: '30%', margin: 15 }} />
             </View>

@@ -26,7 +26,9 @@ const Sign = () => {
                         marginTop: 90,
                     }}
                 >
+                    {params.tipAmount == 100 ? '❤️ ' : ''}
                     You are tipping {params.tipAmount}%.{params.tipAmount == 69 ? '.. You dirty dog' : ''}
+                    {params.tipAmount == 100 ? ' ❤️' : ''}
                 </Text>
 
                 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', margin: 50 }}>
