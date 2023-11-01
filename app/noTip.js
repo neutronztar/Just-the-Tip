@@ -10,12 +10,15 @@ const NoTip = () => {
 
     const sentence = useMemo(() => {
         options = [
-            'I live on tips. Go back and try again.',
             "I'll just assume your finger slipped.",
             "You're a bad person.",
-            'How could you do this to me?',
-            "You think you'll get away with this? You won't.",
-            'Are you sure about that?',
+            "You won't get away with this 🫵🏼",
+            "You should see the last person who didn't tip ☠️",
+            '😡😡😡',
+            'You better watch your back 😈',
+            "I'm telling your mom you didn't leave a tip.",
+            '🖕',
+            '💩',
         ];
 
         return options[Math.floor(Math.random() * options.length)];
