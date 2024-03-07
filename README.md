@@ -2,6 +2,8 @@
 
 This app is a joke gratuity prompt for my [Halloween costume](https://www.youtube.com/shorts/CyQ76o0a0-g). It's a React Native Expo project, and it's designed to run on a 10.2 inch iPad.
 
+![WholeCostume](images/WholeCostume.jpeg)
+
 ### 🚀 Start
 
 ```sh
